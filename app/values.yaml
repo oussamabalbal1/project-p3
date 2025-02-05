@@ -1,0 +1,28 @@
+
+Postgres:
+  deployment:     
+    name: postgres-pod
+    image: postgres:latest
+    replicas: 3
+    port: 5432
+    variables:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - PGDATA
+  pvc:
+    name: postgres-pvc
+    storage: 10Gi
+    storage_class: gp2
+  secret:
+    name: postgres-secret
+    data:
+      POSTGRES_USER: "oussama"
+      POSTGRES_PASSWORD: "oussama"
+      POSTGRES_DB: "oussama"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+  service:
+    name: postgres-service
+    type: ClusterIP
+    port: 5432
+    target_port: 5432
