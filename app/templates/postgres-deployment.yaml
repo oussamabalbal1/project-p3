@@ -29,7 +29,7 @@ spec:
         - name: {{ . }}
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.postgres.secret.name }}
+              name: {{ $.Values.postgres.secret.name }} #to go back to the root 
               key: {{ . }}
         {{- end}}
         ports:
