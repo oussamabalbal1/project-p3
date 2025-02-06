@@ -5,7 +5,7 @@ ingress:
     - backend:
         path: /
         service:
-          name: my-app-service
+          name: nestjs-service
           port_number: 80
 
 nestjs:
