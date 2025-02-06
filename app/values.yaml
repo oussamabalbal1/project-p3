@@ -1,7 +1,7 @@
 
-ingres:
+ingress:
   name: nestjs-ingress
-  host: *
+  host: "*"
   paths:
     - backend:
         path: /
