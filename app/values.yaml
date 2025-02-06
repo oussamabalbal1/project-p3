@@ -1,7 +1,35 @@
+nestjs:
+  deployment:
+    name: nestjs-app
+    image: workat00/your-nestjs-app:latest
+    replicas: 3
+    port: 3000
+    variables:
+    - DB_HOST
+    - DB_PORT
+    - DB_USERNAME
+    - DB_PASSWORD
+    - DB_NAME
+    - DB_SYNCHRONIZE
+  secret:
+    name: nestjs-secret
+    data:
+      DB_HOST: postgres-service #postgres service name 
+      DB_PORT: 5432
+      DB_USERNAME: oussama
+      DB_PASSWORD: oussama
+      DB_NAME: oussama
+      DB_SYNCHRONIZE: true
+  service:
+    name: nestjs-service
+    type: ClusterIP
+    port: 80
+    target_port: 3000
+
 
 postgres:
   deployment:     
-    name: postgres-pod
+    name: postgres-app
     image: postgres:latest
     replicas: 3
     port: 5432
